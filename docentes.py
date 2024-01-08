@@ -1,7 +1,7 @@
 import os
-from registro import *
 
-def rutaDocente():
+
+def rutaDocente(docente, Ruta):
     os.system('cls')
     while True:        
         print("Ingrese el nombre del docente:")
@@ -9,9 +9,9 @@ def rutaDocente():
         if nombre in docente:
             print("Selecione la ruta:\n\t1. NodeJS\n\t2. Java\n\t3. NetCore")
             selec = int(input(""))
-            if selec == 1: docente[nombre]['Ruta']="NodeJS"
-            elif selec == 2: docente[nombre]['Ruta']="Java"
-            elif selec == 3: docente[nombre]['Ruta']="NetCore"
+            if selec == 1: docente[nombre]['Ruta']=Ruta['NodeJS']
+            elif selec == 2: docente[nombre]['Ruta']=Ruta['Java']
+            elif selec == 3: docente[nombre]['Ruta']=Ruta['NetCore']
         else:
             print("Docente no existe")
             continue
@@ -22,7 +22,7 @@ def rutaDocente():
             print("Rutas modificadas")
             break
 
-def horarioDocente():
+def horarioDocente(docente):
     os.system('cls')
     while True:        
         print("Ingrese el nombre del docente:")
@@ -44,7 +44,7 @@ def horarioDocente():
             print("Horarios modificados")
             break
 
-def areaDocente():
+def areaDocente(docente):
     os.system('cls')
     while True:        
         print("Ingrese el nombre del docente:")
@@ -65,7 +65,7 @@ def areaDocente():
             print("Horarios modificados")
             break
 
-def listarDocente():
+def listarDocente(docente):
     print("Nombre\tArea\tHorario\tRuta")
     for i in docente:
         print(f"{i}\t{docente[i]['Area']}\t{docente[i]['Horario']}\t{docente[i]['Ruta']}")

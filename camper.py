@@ -1,6 +1,6 @@
 import os
-from registro import *
-def AsignarRuta():
+
+def AsignarRuta(campers, Ruta):
     while True:
         os.system('cls')        
         print("Ingrese el documento del Camper:")
@@ -8,9 +8,9 @@ def AsignarRuta():
         if cc in campers:
             print("Seleccione la ruta asignar:\n\t1. NodeJS\n\t2. Java\n\t3. NetCore")
             selec = int(input(""))
-            if selec == 1: campers[cc]['ruta']='NodeJS'
-            elif selec == 2: campers[cc]['ruta']='Java'
-            elif selec == 3: campers[cc]['ruta']='NetCore'
+            if selec == 1: campers[cc]['ruta']= Ruta['NodeJS']
+            elif selec == 2: campers[cc]['ruta']=Ruta['Java']
+            elif selec == 3: campers[cc]['ruta']=Ruta['NetCore']
         else: 
             print("Camper no existe")
             continue
@@ -20,9 +20,8 @@ def AsignarRuta():
         else: 
             print("Rutas Asignadas")
             break
-    print(campers)
 
-def notaSeleccion():
+def notaSeleccion(campers):
     while True:
         os.system('cls')
         print("Ingrese el documento del Camper:")
@@ -44,25 +43,53 @@ def notaSeleccion():
         else: 
             print("Notas Asignadas")
             break
-
-
-def notasFiltro():
+    
+def notasFiltro(campers):
      os.system('cls')
+     notas ={}
      while True:        
         print("Ingrese el documento del Camper:")
         cc = int(input(""))
         if cc in campers:
             if 'notas de filtro' in campers[cc]:
-                print("Ingrese la nota de Quiz")
-                quiz=int(input(""))
-                print("Ingrese la nota de Trabajos:")
-                Trabajos=int(input(""))
-                print("Ingrese la nota de prueba practica:")
-                pruebaPactica=int(input(""))
-                print("Ingrese la nota de prueba toerica:")
-                pruebaTeorica=int(input(""))
-                notaFinal = ((((quiz+Trabajos)/2)*0.10)+(pruebaPactica*0.6)+(pruebaTeorica*0.3))
-                campers[cc]['notas de filtro'].append(notaFinal)
+                print("seleccione el modulo:")                
+                for i,j in enumerate(campers[cc]['ruta'],start=1):
+                    print(f"\t{i}. {j}")
+                selec=int(input(""))
+                if selec == 1:
+                    notas[campers[cc]['ruta'][selec-1]] = {'quiz':float(input("ingrese la nota del quiz")),
+                                                           'taller':float(input("ingrese la nota del taller")),
+                                                           'PruebaP':float(input("ingrese la nota de la prueba practica")),
+                                                           'PruebaT':float(input("ingrese la nota de la prueba teorica"))
+                                                           }
+                elif selec ==2:
+                    notas[campers[cc]['ruta'][selec-1]] = {'quiz':float(input("ingrese la nota del quiz")),
+                                                           'taller':float(input("ingrese la nota del taller")),
+                                                           'PruebaP':float(input("ingrese la nota de la prueba practica")),
+                                                           'PruebaT':float(input("ingrese la nota de la prueba teorica"))}
+                elif selec ==3:
+                    notas[campers[cc]['ruta'][selec-1]] = {'quiz':float(input("ingrese la nota del quiz")),
+                                                           'taller':float(input("ingrese la nota del taller")),
+                                                           'PruebaP':float(input("ingrese la nota de la prueba practica")),
+                                                           'PruebaT':float(input("ingrese la nota de la prueba teorica"))}
+                elif selec ==4:
+                    notas[campers[cc]['ruta'][selec-1]] = {'quiz':float(input("ingrese la nota del quiz")),
+                                                           'taller':float(input("ingrese la nota del taller")),
+                                                           'PruebaP':float(input("ingrese la nota de la prueba practica")),
+                                                           'PruebaT':float(input("ingrese la nota de la prueba teorica"))}
+                elif selec ==5:
+                    notas[campers[cc]['ruta'][selec-1]] = {'quiz':float(input("ingrese la nota del quiz")),
+                                                           'taller':float(input("ingrese la nota del taller")),
+                                                           'PruebaP':float(input("ingrese la nota de la prueba practica")),
+                                                           'PruebaT':float(input("ingrese la nota de la prueba teorica"))}
+                elif selec ==6:
+                    notas[campers[cc]['ruta'][selec-1]] = {'quiz':float(input("ingrese la nota del quiz")),
+                                                           'taller':float(input("ingrese la nota del taller")),
+                                                           'PruebaP':float(input("ingrese la nota de la prueba practica")),
+                                                           'PruebaT':float(input("ingrese la nota de la prueba teorica"))}
+                x = calNotaFinal(notas)
+                campers[cc]['notas de filtro'] = x
+                
             else:
                 print("Camper no inscrito")
                 continue
@@ -76,16 +103,24 @@ def notasFiltro():
             print("Notas Asignadas")
             break
      
-
-def campersInscritos():
+def campersInscritos(campers):
     print("Cedula\tNombre")
     for i in campers:
         if 'inscrito' in campers[i].values():
             print(f"{i}\t{campers[i]['nombre']}")
 
-def campersBajoRendimiento():
+def campersBajoRendimiento(campers):
      for i in campers:
          promNotas = campers[i]['notas de filtro']/len(campers[i]['notas de filtro'])
          if promNotas < 60:
              print(f"{i}\t{campers[i]['nombre']}")
+
+def calNotaFinal(notas):
+    for i in notas:
+        nqt = (notas[i]['quiz']+notas[i]['taller'])/2
+        notaFinal = (nqt*0.1)+(notas[i]['PruebaP']*0.6)+(notas[i]['PruebaT']*0.3)
+        notas[i]['NotaFinal'] = notaFinal
+        return notas
+
+
 

@@ -1,9 +1,6 @@
 import os
-campers = {123:{'nombre':'Robin','direccion':'asdasd','acudiente':'acudiente','tel':'tel','estado':'estado','ruta':'Java'}}
-docente = {'Duvan':{'Ruta':'Java','Horario':'Horario','Area':'Area'}}
-Ruta = {'NodeJS':["PSeInt","Python"],'Java':["PSeInt","Python"],'NetCore':["PSeInt","Python"]}
 
-def registroCampers():
+def registroCampers(campers):
     
     while True:
         os.system('cls')
@@ -38,7 +35,7 @@ def registroCampers():
             print("Campers registrados")
             break
         
-def registroDocente():
+def registroDocente(docente,Ruta):
     while True:
         os.system('cls')
         print("Ingrese el nombre:")
@@ -69,7 +66,7 @@ def registroDocente():
             print("docentes registrados")
             break
 
-def registroRutas():#Crear una funcion que evalue si ya la ruta fue creada
+def registroRutas(Ruta):#Crear una funcion que evalue si ya la ruta fue creada
     while True:
         os.system('cls')
         print("Selecione La ruta que desea crear:\n\t1. NodeJS\n\t2. Java\n\t3. NetCore")
@@ -148,3 +145,39 @@ def registroRutas():#Crear una funcion que evalue si ya la ruta fue creada
             print("Rutas Creadas")
             break
 
+def  registriArea(areas):
+    os.system('cls')
+    while True:                
+        print("Ingrese el documento del Camper:")
+        cc = int(input(""))
+        if cc in campers:
+            if 'inscrito' in campers[cc].values():
+                print("Selecione el area de trabajo:\n\t1. Apollo\n\t2. Artemis\n\t3. Sputnik")
+                selec = int(input(""))
+                if selec == 1:
+                    if areas["Apollo"]<= 33:
+                        areas["Apollo"] += 1 
+                        campers[cc]['Area'] = "Apollo"                    
+                    else:
+                        print("Area llena, seleccione otra")
+                        continue
+                elif selec == 2:
+                    if areas["Artemis"]<= 33:
+                        areas["Artemis"] += 1 
+                        campers[cc]['Area'] = "Artemis"                    
+                    else:
+                        print("Area llena, seleccione otra")
+                        continue
+                elif selec == 3: 
+                    if areas["Sputnik"]<= 33:
+                        areas["Sputnik"] += 1 
+                        campers[cc]['Area'] = "Sputnik"                    
+                    else:
+                        print("Area llena, seleccione otra")
+                        continue
+        print("Desea asignart otra area?\n\t1. Sí\n\t2. No")
+        selec = int(input(""))
+        if selec ==1: continue 
+        else: 
+            print("Areas asignadas")
+            break
