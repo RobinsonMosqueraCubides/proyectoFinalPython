@@ -4,7 +4,7 @@ def AsignarRuta(campers, Ruta):
     while True:
         os.system('cls')        
         print("Ingrese el documento del Camper:")
-        cc = int(input(""))
+        cc = input("")
         if cc in campers:
             print("Seleccione la ruta asignar:\n\t1. NodeJS\n\t2. Java\n\t3. NetCore")
             selec = int(input(""))
@@ -24,8 +24,9 @@ def AsignarRuta(campers, Ruta):
 def notaSeleccion(campers):
     while True:
         os.system('cls')
+        print(campers)
         print("Ingrese el documento del Camper:")
-        cc = int(input(""))
+        cc = input("")
         if cc in campers:
                 print("Ingrese la Nota del camper")
                 nota = int(input(""))
@@ -49,7 +50,7 @@ def notasFiltro(campers):
      notas ={}
      while True:        
         print("Ingrese el documento del Camper:")
-        cc = int(input(""))
+        cc = input("")
         if cc in campers:
             if 'notas de filtro' in campers[cc]:
                 print("seleccione el modulo:")                

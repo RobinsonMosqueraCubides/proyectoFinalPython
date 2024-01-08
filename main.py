@@ -3,14 +3,18 @@ from docentes import *
 from listas import *
 from registro import *
 import os
-campers = {123:{'nombre':'Robin','direccion':'asdasd','acudiente':'acudiente','tel':'tel','estado':'estado','ruta':'Java'}}
-docente = {'Duvan':{'Ruta':'Java','Horario':'Horario','Area':'Area'}}
-Ruta = {'NodeJS':["PSeInt","Python"],'Java':["PSeInt","Python"],'NetCore':["PSeInt","Python"]}
-areas = {'Apollo':0,'Artemis':0,'Sputnik':0}
+import json
+datos = 'data.json'
+with open(datos, 'r') as archivo:
+    lista = json.load(archivo)
+campers = lista[0]
+docente = lista[1]
+Ruta = lista[2]
+areas = lista[3]
 
 def menuPrincipal():
     while True:
-        os.system('cls')
+        #os.system('cls')
         print("Ingrese el numero de la opcion deseada:\n1. Registro\n2. Camper\n3. Docentes\n4. Listas\n5. Salir")
         selec = int(input(""))
         if selec == 1:
@@ -21,7 +25,9 @@ def menuPrincipal():
             elif selec == 2: registroDocente(docente, Ruta)
             elif selec == 3: registroRutas(Ruta)
             elif selec == 4: registriArea(areas)
-            elif selec == 5: continue
+            elif selec == 5: 
+                print(campers)
+                #continue                
             else: print("ingrese un numero del 1 al 5")
         elif selec == 2:
             os.system('cls')
@@ -51,6 +57,11 @@ def menuPrincipal():
             if selec == 1: listaDocenteCamper(docente, campers)
             elif selec == 2: listarCampersAprobados(docente, campers)
             elif selec == 3: continue
-        elif selec == 5: break
+        elif selec == 5: 
+            lista = [campers,docente,Ruta,areas]
+            with open(datos, 'w') as archivo:
+                json.dump(lista, archivo)                
+            break
+    
         else: print("ingrese un numero del 1 al 5")
 menuPrincipal()
