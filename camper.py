@@ -61,7 +61,7 @@ def notasFiltro():
                 pruebaPactica=int(input(""))
                 print("Ingrese la nota de prueba toerica:")
                 pruebaTeorica=int(input(""))
-                notaFinal = (((quiz+Trabajos)*0.10)+(pruebaPactica*0.6)+(pruebaTeorica*0.3))
+                notaFinal = ((((quiz+Trabajos)/2)*0.10)+(pruebaPactica*0.6)+(pruebaTeorica*0.3))
                 campers[cc]['notas de filtro'].append(notaFinal)
             else:
                 print("Camper no inscrito")
@@ -80,7 +80,8 @@ def notasFiltro():
 def campersInscritos():
     print("Cedula\tNombre")
     for i in campers:
-        print(f"{i}\t{campers[i]['nombre']}")
+        if 'inscrito' in campers[i].values():
+            print(f"{i}\t{campers[i]['nombre']}")
 
 def campersBajoRendimiento():
      for i in campers:

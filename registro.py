@@ -1,6 +1,6 @@
 import os
-campers = {123:{'nombre':'Robin','direccion':'asdasd','acudiente':'acudiente','tel':'tel','estado':'estado','ruta':'Sin Ruta'}}
-docente = {}
+campers = {123:{'nombre':'Robin','direccion':'asdasd','acudiente':'acudiente','tel':'tel','estado':'estado','ruta':'Java'}}
+docente = {'Duvan':{'Ruta':'Java','Horario':'Horario','Area':'Area'}}
 Ruta = {'NodeJS':["PSeInt","Python"],'Java':["PSeInt","Python"],'NetCore':["PSeInt","Python"]}
 
 def registroCampers():
