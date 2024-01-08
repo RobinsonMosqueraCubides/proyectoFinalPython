@@ -24,7 +24,7 @@ def menuPrincipal():
             if selec == 1: registroCampers(campers)
             elif selec == 2: registroDocente(docente, Ruta)
             elif selec == 3: registroRutas(Ruta)
-            elif selec == 4: registriArea(areas)
+            elif selec == 4: registriArea(campers,areas)
             elif selec == 5: 
                 print(campers)
                 #continue                

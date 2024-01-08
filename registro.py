@@ -145,11 +145,11 @@ def registroRutas(Ruta):#Crear una funcion que evalue si ya la ruta fue creada
             print("Rutas Creadas")
             break
 
-def  registriArea(areas):
+def  registriArea(campers,areas):
     os.system('cls')
     while True:                
         print("Ingrese el documento del Camper:")
-        cc = int(input(""))
+        cc = input("")
         if cc in campers:
             if 'inscrito' in campers[cc].values():
                 print("Selecione el area de trabajo:\n\t1. Apollo\n\t2. Artemis\n\t3. Sputnik")
@@ -175,7 +175,7 @@ def  registriArea(areas):
                     else:
                         print("Area llena, seleccione otra")
                         continue
-        print("Desea asignart otra area?\n\t1. Sí\n\t2. No")
+        print("Desea asignar otra area?\n\t1. Sí\n\t2. No")
         selec = int(input(""))
         if selec ==1: continue 
         else: 
