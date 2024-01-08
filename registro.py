@@ -1,5 +1,5 @@
 import os
-campers = {}
+campers = {123:{'nombre':'Robin','direccion':'asdasd','acudiente':'acudiente','tel':'tel','estado':'estado','ruta':'Sin Ruta'}}
 docente = {}
 Ruta = {'NodeJS':["PSeInt","Python"],'Java':["PSeInt","Python"],'NetCore':["PSeInt","Python"]}
 
@@ -29,7 +29,7 @@ def registroCampers():
         selec = int(input(""))
         if selec ==1: tel.append(input(""))
         estado = "PreInscrito"
-        datos = {'nombre':nombre,'direccion':direccion,'acudiente':acudiente,'tel':tel,'estado':estado,'ruta':None}
+        datos = {'nombre':nombre,'direccion':direccion,'acudiente':acudiente,'tel':tel,'estado':estado}
         campers[cc] = datos
         print("Desea registrar otro camper?\n\t1. Sí\n\t2. No")
         selec = int(input(""))
