@@ -1,5 +1,5 @@
 import os
-
+from manejoErrores import *
 def AsignarRuta(campers, Ruta):
     while True:
         os.system('cls')        
@@ -7,7 +7,7 @@ def AsignarRuta(campers, Ruta):
         cc = input("")
         if cc in campers:
             print("Seleccione la ruta asignar:\n\t1. NodeJS\n\t2. Java\n\t3. NetCore")
-            selec = int(input(""))
+            selec = manejoStr()
             if selec == 1: campers[cc]['ruta']= Ruta['NodeJS']
             elif selec == 2: campers[cc]['ruta']=Ruta['Java']
             elif selec == 3: campers[cc]['ruta']=Ruta['NetCore']
@@ -15,7 +15,7 @@ def AsignarRuta(campers, Ruta):
             print("Camper no existe")
             continue
         print("Desea Asignar otra ruta?\n\t1. Sí\n\t2. No")
-        selec = int(input(""))
+        selec = manejoStr()
         if selec ==1: continue 
         else: 
             print("Rutas Asignadas")
@@ -28,8 +28,8 @@ def notaSeleccion(campers):
         print("Ingrese el documento del Camper:")
         cc = input("")
         if cc in campers:
-                print("Ingrese la Nota del camper")
-                nota = int(input(""))
+                #print("Ingrese la Nota del camper")
+                nota = manejoNotasDic('Nota de Seleccion')
                 if nota >= 60:
                     campers[cc]['estado']='inscrito'
                     campers[cc]['notas de filtro']=[]
@@ -39,7 +39,7 @@ def notaSeleccion(campers):
             print("Camper no existe")
             continue
         print("Desea ingresar otra nota?\n\t1. Sí\n\t2. No")
-        selec = int(input(""))
+        selec = manejoStr()
         if selec ==1: continue 
         else: 
             print("Notas Asignadas")
@@ -56,38 +56,43 @@ def notasFiltro(campers):
                 print("seleccione el modulo:")                
                 for i,j in enumerate(campers[cc]['ruta'],start=1):
                     print(f"\t{i}. {j}")
-                selec=int(input(""))
+                selec=manejoStr()
                 if selec == 1:
-                    notas[campers[cc]['ruta'][selec-1]] = {'quiz':float(input("ingrese la nota del quiz")),
-                                                           'taller':float(input("ingrese la nota del taller")),
-                                                           'PruebaP':float(input("ingrese la nota de la prueba practica")),
-                                                           'PruebaT':float(input("ingrese la nota de la prueba teorica"))
+                    notas[campers[cc]['ruta'][selec-1]] = {'quiz':manejoNotasDic('quiz'),
+                                                           'taller':manejoNotasDic('taller'),
+                                                           'PruebaP':manejoNotasDic('Prueba Practica'),
+                                                           'PruebaT':manejoNotasDic('Prueba Teorica')
                                                            }
                 elif selec ==2:
-                    notas[campers[cc]['ruta'][selec-1]] = {'quiz':float(input("ingrese la nota del quiz")),
-                                                           'taller':float(input("ingrese la nota del taller")),
-                                                           'PruebaP':float(input("ingrese la nota de la prueba practica")),
-                                                           'PruebaT':float(input("ingrese la nota de la prueba teorica"))}
+                    notas[campers[cc]['ruta'][selec-1]] = {'quiz':manejoNotasDic('quiz'),
+                                                           'taller':manejoNotasDic('taller'),
+                                                           'PruebaP':manejoNotasDic('Prueba Practica'),
+                                                           'PruebaT':manejoNotasDic('Prueba Teorica')
+                                                           }
                 elif selec ==3:
-                    notas[campers[cc]['ruta'][selec-1]] = {'quiz':float(input("ingrese la nota del quiz")),
-                                                           'taller':float(input("ingrese la nota del taller")),
-                                                           'PruebaP':float(input("ingrese la nota de la prueba practica")),
-                                                           'PruebaT':float(input("ingrese la nota de la prueba teorica"))}
+                    notas[campers[cc]['ruta'][selec-1]] = {'quiz':manejoNotasDic('quiz'),
+                                                           'taller':manejoNotasDic('taller'),
+                                                           'PruebaP':manejoNotasDic('Prueba Practica'),
+                                                           'PruebaT':manejoNotasDic('Prueba Teorica')
+                                                           }
                 elif selec ==4:
-                    notas[campers[cc]['ruta'][selec-1]] = {'quiz':float(input("ingrese la nota del quiz")),
-                                                           'taller':float(input("ingrese la nota del taller")),
-                                                           'PruebaP':float(input("ingrese la nota de la prueba practica")),
-                                                           'PruebaT':float(input("ingrese la nota de la prueba teorica"))}
+                    notas[campers[cc]['ruta'][selec-1]] = {'quiz':manejoNotasDic('quiz'),
+                                                           'taller':manejoNotasDic('taller'),
+                                                           'PruebaP':manejoNotasDic('Prueba Practica'),
+                                                           'PruebaT':manejoNotasDic('Prueba Teorica')
+                                                           }
                 elif selec ==5:
-                    notas[campers[cc]['ruta'][selec-1]] = {'quiz':float(input("ingrese la nota del quiz")),
-                                                           'taller':float(input("ingrese la nota del taller")),
-                                                           'PruebaP':float(input("ingrese la nota de la prueba practica")),
-                                                           'PruebaT':float(input("ingrese la nota de la prueba teorica"))}
+                    notas[campers[cc]['ruta'][selec-1]] = {'quiz':manejoNotasDic('quiz'),
+                                                           'taller':manejoNotasDic('taller'),
+                                                           'PruebaP':manejoNotasDic('Prueba Practica'),
+                                                           'PruebaT':manejoNotasDic('Prueba Teorica')
+                                                           }
                 elif selec ==6:
-                    notas[campers[cc]['ruta'][selec-1]] = {'quiz':float(input("ingrese la nota del quiz")),
-                                                           'taller':float(input("ingrese la nota del taller")),
-                                                           'PruebaP':float(input("ingrese la nota de la prueba practica")),
-                                                           'PruebaT':float(input("ingrese la nota de la prueba teorica"))}
+                    notas[campers[cc]['ruta'][selec-1]] = {'quiz':manejoNotasDic('quiz'),
+                                                           'taller':manejoNotasDic('taller'),
+                                                           'PruebaP':manejoNotasDic('Prueba Practica'),
+                                                           'PruebaT':manejoNotasDic('Prueba Teorica')
+                                                           }
                 x = calNotaFinal(notas)
                 campers[cc]['notas de filtro'] = x
                 
@@ -98,7 +103,7 @@ def notasFiltro(campers):
             print("Camper no existe")
             continue
         print("Desea ingresar otra nota?\n\t1. Sí\n\t2. No")
-        selec = int(input(""))
+        selec = manejoStr()
         if selec ==1: continue 
         else: 
             print("Notas Asignadas")
