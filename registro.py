@@ -1,13 +1,16 @@
 import os
 from manejoErrores import *
+
 def registroCampers(campers):
     
     while True:
-        os.system('cls')
+        os.system('clear')
         print("Ingrese el numero de identificacion:")
-        cc = manejoINT()
+        cc = input("")
         print("Ingrese el nombre:")
         nombre = manejoStr()
+        print("Ingrese el apellido:")
+        apellido = manejoStr()
         print("Ingrese la direccion:")
         direccion = input("")
         print("Ingrese la edad:")
@@ -25,8 +28,8 @@ def registroCampers(campers):
         print("Desea agregar otro numero?\n\t1. Sí\n\t2. No")
         selec = manejoINT()
         if selec ==1: tel.append(manejoINT())
-        estado = "PreInscrito"
-        datos = {'nombre':nombre,'direccion':direccion,'acudiente':acudiente,'tel':tel,'estado':estado}
+        estado = "inscrito"
+        datos = {'nombre':nombre,'apellido':apellido,'direccion':direccion,'acudiente':acudiente,'tel':tel,'estado':estado}
         campers[cc] = datos
         print("Desea registrar otro camper?\n\t1. Sí\n\t2. No")
         selec = manejoINT()
@@ -34,10 +37,12 @@ def registroCampers(campers):
         else: 
             print("Campers registrados")
             break
+    print(campers)
         
 def registroDocente(docente,Ruta):
+    rutaDocente = {}
     while True:
-        os.system('cls')
+        os.system('clear')
         print("Ingrese el nombre:")
         nombre = manejoStr()
         print("Seleccione el horario del docente:\n\t1. 6am a 10am\n\t2. 10am a 2 pm\n\t3. 2pm a 6 pm\n\t4. 6pm a 10 pm")
@@ -56,7 +61,8 @@ def registroDocente(docente,Ruta):
         if selec == 1: ruta="NodeJS"
         elif selec == 2: ruta="Java"
         elif selec == 3: ruta="NetCore"
-        docente[nombre] = {'Ruta':Ruta[ruta], 
+        rutaDocente[ruta] = Ruta[ruta]
+        docente[nombre] = {'Ruta':rutaDocente, 
                         'Horario':Horario, 
                         'Area':Area}
         print("Desea registrar otro docente?\n\t1. Sí\n\t2. No")
@@ -65,10 +71,11 @@ def registroDocente(docente,Ruta):
         else: 
             print("docentes registrados")
             break
+    print(docente)
 
 def registroRutas(Ruta):#Crear una funcion que evalue si ya la ruta fue creada
     while True:
-        os.system('cls')
+        os.system('clear')
         print("Selecione La ruta que desea crear:\n\t1. NodeJS\n\t2. Java\n\t3. NetCore")
         selec = manejoINT()
         if selec == 1: 
@@ -146,7 +153,7 @@ def registroRutas(Ruta):#Crear una funcion que evalue si ya la ruta fue creada
             break
 
 def  registriArea(campers,areas):
-    os.system('cls')
+    os.system('clear')
     while True:                
         print("Ingrese el documento del Camper:")
         cc = input("")
@@ -180,4 +187,34 @@ def  registriArea(campers,areas):
         if selec ==1: continue 
         else: 
             print("Areas asignadas")
+            break
+
+def registroFecha(campers):
+
+    while True:
+        print("ingrese la cc del camper:")
+        cc = input("")
+        if cc in campers:
+            if 'inscrito'in campers[cc].values():
+                print("ingrese el dia de ingreso:")
+                dia = manejoINT()
+                print("ingrese el mes de ingreso:")
+                mes = manejoINT()
+                print("ingrese el año de ingreso:")
+                annio = manejoINT()
+                print("ingrese el dia esperado de finalizacion:")
+                diaF = manejoINT()
+                print("ingrese el mes esperado de finalizacion:")
+                mesF = manejoINT()
+                print("ingrese el año esperado de finalizacion:")
+                annioF = manejoINT()                        
+                campers[cc]['Fecha Inicio'] = str(f"{dia}/{mes}/{annio}")
+                campers[cc]['Fecha Fin'] = str(f"{diaF}/{mesF}/{annioF}")
+            else: print("camper no inscrito")
+        else: print("Camper no registrado")
+        print("Desea ingresar otra fecga?\n\t1. Sí\n\t2. No")
+        selec = manejoINT()
+        if selec ==1: continue 
+        else: 
+            print("fechas Asignadas")
             break

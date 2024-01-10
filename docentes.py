@@ -2,7 +2,7 @@ import os
 from manejoErrores import *
 
 def rutaDocente(docente, Ruta):
-    os.system('cls')
+    os.system('clear')
     while True:        
         print("Ingrese el nombre del docente:")
         nombre = manejoStr()
@@ -23,7 +23,7 @@ def rutaDocente(docente, Ruta):
             break
 
 def horarioDocente(docente):
-    os.system('cls')
+    os.system('clear')
     while True:        
         print("Ingrese el nombre del docente:")
         nombre = manejoStr()
@@ -45,7 +45,7 @@ def horarioDocente(docente):
             break
 
 def areaDocente(docente):
-    os.system('cls')
+    os.system('clear')
     while True:        
         print("Ingrese el nombre del docente:")
         nombre = manejoStr()
@@ -69,3 +69,4 @@ def listarDocente(docente):
     print("Nombre\tArea\tHorario\tRuta")
     for i in docente:
         print(f"{i}\t{docente[i]['Area']}\t{docente[i]['Horario']}\t{docente[i]['Ruta']}")
+    input()

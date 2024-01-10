@@ -1,7 +1,7 @@
 import os
 
 def listaDocenteCamper(docente,campers):
-    os.system('cls')
+    os.system('clear')
     print("Ruta Java")
     print("\tDocentes:")
     for i in docente:
@@ -32,7 +32,7 @@ def listaDocenteCamper(docente,campers):
     input()
 
 def listarCampersAprobados(docente, campers):
-    os.system('cls')
+    os.system('clear')
     print("Ruta Java\n\tAprobados\n\t\tCampers:")
     for i in campers:
         if 'Java' in campers[i].values():
