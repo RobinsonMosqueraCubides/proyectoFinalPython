@@ -5,7 +5,7 @@ def registroCampers(campers):
     while True:
         os.system('cls')
         print("Ingrese el numero de identificacion:")
-        cc = manejoINT()
+        cc = input("")
         print("Ingrese el nombre:")
         nombre = manejoStr()
         print("Ingrese la direccion:")
@@ -33,6 +33,7 @@ def registroCampers(campers):
         if selec ==1: continue 
         else: 
             print("Campers registrados")
+            input()
             break
         
 def registroDocente(docente,Ruta):
@@ -56,7 +57,7 @@ def registroDocente(docente,Ruta):
         if selec == 1: ruta="NodeJS"
         elif selec == 2: ruta="Java"
         elif selec == 3: ruta="NetCore"
-        docente[nombre] = {'Ruta':Ruta[ruta], 
+        docente[nombre] = {'Ruta':{ruta: Ruta.get(ruta, {})}, 
                         'Horario':Horario, 
                         'Area':Area}
         print("Desea registrar otro docente?\n\t1. Sí\n\t2. No")
@@ -64,6 +65,7 @@ def registroDocente(docente,Ruta):
         if selec ==1: continue 
         else: 
             print("docentes registrados")
+            input()
             break
 
 def registroRutas(Ruta):#Crear una funcion que evalue si ya la ruta fue creada
@@ -72,77 +74,78 @@ def registroRutas(Ruta):#Crear una funcion que evalue si ya la ruta fue creada
         print("Selecione La ruta que desea crear:\n\t1. NodeJS\n\t2. Java\n\t3. NetCore")
         selec = manejoINT()
         if selec == 1: 
-            print("Programación Web:\n\t1. HTML\n\t2. CSS\n\t3. Bootstrap")
+            print("Programacion Web:\n\t1. HTML\n\t2. CSS\n\t3. Bootstrap")
             selec = manejoINT()
-            if selec == 1: Ruta["NodeJS"].append("HTML")
-            elif selec == 2: Ruta["NodeJS"].append("CSS")
-            elif selec == 3: Ruta["NodeJS"].append("Bootstrap")
-            print("Programación formal:\n\t1. Java\n\t2. JavaScript\n\t3. C#")
+            if selec == 1: Ruta["NodeJS"]['Programacion Web'] = 'HTML'
+            elif selec == 2: Ruta["NodeJS"]['Programacion Web'] = "CSS"
+            elif selec == 3: Ruta["NodeJS"]['Programacion Web'] = "Bootstrap"
+            print("Programacion formal:\n\t1. Java\n\t2. JavaScript\n\t3. C#")
             selec = manejoINT()
-            if selec == 1: Ruta["NodeJS"].append("Java")
-            elif selec == 2: Ruta["NodeJS"].append("JavaScript")
-            elif selec == 3: Ruta["NodeJS"].append("C#") 
+            if selec == 1: Ruta["NodeJS"]['Programacion formal'] = "Java"
+            elif selec == 2: Ruta["NodeJS"]['Programacion formal'] = "JavaScript"
+            elif selec == 3: Ruta["NodeJS"]['Programacion formal'] = "C#" 
             print("Bases de datos:\n\t1. Mysql\n\t2. MongoDb\n\t3. Postgresql")
             selec = manejoINT()
-            if selec == 1: Ruta["NodeJS"].append("Mysql")
-            elif selec == 2: Ruta["NodeJS"].append("MongoDb")
-            elif selec == 3: Ruta["NodeJS"].append("Postgresql") 
+            if selec == 1: Ruta["NodeJS"]['Bases de datos'] = "Mysql"
+            elif selec == 2: Ruta["NodeJS"]['Bases de datos'] = "MongoDb"
+            elif selec == 3: Ruta["NodeJS"]['Bases de datos'] = "Postgresql" 
             print("Backend:\n\t1. NetCore\n\t2. Spring Boot\n\t3. NodeJS\n\t4. Express")
             selec = manejoINT()
-            if selec == 1: Ruta["NodeJS"].append("NetCore")
-            elif selec == 2: Ruta["NodeJS"].append("Spring Boot")
-            elif selec == 3: Ruta["NodeJS"].append("NodeJS") 
-            elif selec == 4: Ruta["NodeJS"].append("Express") 
+            if selec == 1: Ruta["NodeJS"]['Backend'] = "NetCore"
+            elif selec == 2: Ruta["NodeJS"]['Backend'] = "Spring Boot"
+            elif selec == 3: Ruta["NodeJS"]['Backend'] = "NodeJS" 
+            elif selec == 4: Ruta["NodeJS"]['Backend'] = "Express" 
             
         elif selec == 2:
-            print("Programación Web:\n\t1. HTML\n\t2. CSS\n\t3. Bootstrap")
+            print("Programacion Web:\n\t1. HTML\n\t2. CSS\n\t3. Bootstrap")
             selec = manejoINT()
-            if selec == 1: Ruta["Java"].append("HTML")
-            elif selec == 2: Ruta["Java"].append("CSS")
-            elif selec == 3: Ruta["Java"].append("Bootstrap")
-            print("Programación formal:\n\t1. Java\n\t2. JavaScript\n\t3. C#")
+            if selec == 1: Ruta["Java"]['Programacion Web'] = 'HTML'
+            elif selec == 2: Ruta["Java"]['Programacion Web'] = "CSS"
+            elif selec == 3: Ruta["Java"]['Programacion Web'] = "Bootstrap"
+            print("Programacion formal:\n\t1. Java\n\t2. JavaScript\n\t3. C#")
             selec = manejoINT()
-            if selec == 1: Ruta["Java"].append("Java")
-            elif selec == 2: Ruta["Java"].append("JavaScript")
-            elif selec == 3: Ruta["Java"].append("C#") 
+            if selec == 1: Ruta["Java"]['Programacion formal'] = "Java"
+            elif selec == 2: Ruta["Java"]['Programacion formal'] = "JavaScript"
+            elif selec == 3: Ruta["Java"]['Programacion formal'] = "C#" 
             print("Bases de datos:\n\t1. Mysql\n\t2. MongoDb\n\t3. Postgresql")
             selec = manejoINT()
-            if selec == 1: Ruta["Java"].append("Mysql")
-            elif selec == 2: Ruta["Java"].append("MongoDb")
-            elif selec == 3: Ruta["Java"].append("Postgresql") 
+            if selec == 1: Ruta["Java"]['Bases de datos'] = "Mysql"
+            elif selec == 2: Ruta["Java"]['Bases de datos'] = "MongoDb"
+            elif selec == 3: Ruta["Java"]['Bases de datos'] = "Postgresql" 
             print("Backend:\n\t1. NetCore\n\t2. Spring Boot\n\t3. NodeJS\n\t4. Express")
             selec = manejoINT()
-            if selec == 1: Ruta["Java"].append("NetCore")
-            elif selec == 2: Ruta["Java"].append("Spring Boot")
-            elif selec == 3: Ruta["Java"].append("NodeJS") 
-            elif selec == 4: Ruta["Java"].append("Express")
+            if selec == 1: Ruta["Java"]['Backend'] = "NetCore"
+            elif selec == 2: Ruta["Java"]['Backend'] = "Spring Boot"
+            elif selec == 3: Ruta["Java"]['Backend'] = "NodeJS" 
+            elif selec == 4: Ruta["Java"]['Backend'] = "Express"
         elif selec == 3: 
-            print("Programación Web:\n\t1. HTML\n\t2. CSS\n\t3. Bootstrap")
+            print("Programacion Web:\n\t1. HTML\n\t2. CSS\n\t3. Bootstrap")
             selec = manejoINT()
-            if selec == 1: Ruta["NetCore"].append("HTML")
-            elif selec == 2: Ruta["NetCore"].append("CSS")
-            elif selec == 3: Ruta["NetCore"].append("Bootstrap")
-            print("Programación formal:\n\t1. Java\n\t2. JavaScript\n\t3. C#")
+            if selec == 1: Ruta["NetCore"]['Programacion Web'] = 'HTML'
+            elif selec == 2: Ruta["NetCore"]['Programacion Web'] = "CSS"
+            elif selec == 3: Ruta["NetCore"]['Programacion Web'] = "Bootstrap"
+            print("Programacion formal:\n\t1. Java\n\t2. JavaScript\n\t3. C#")
             selec = manejoINT()
-            if selec == 1: Ruta["NetCore"].append("Java")
-            elif selec == 2: Ruta["NetCore"].append("JavaScript")
-            elif selec == 3: Ruta["NetCore"].append("C#")
+            if selec == 1: Ruta["NetCore"]['Programacion formal'] = "Java"
+            elif selec == 2: Ruta["NetCore"]['Programacion formal'] = "JavaScript"
+            elif selec == 3: Ruta["NetCore"]['Programacion formal'] = "C#" 
             print("Bases de datos:\n\t1. Mysql\n\t2. MongoDb\n\t3. Postgresql")
             selec = manejoINT()
-            if selec == 1: Ruta["NetCore"].append("Mysql")
-            elif selec == 2: Ruta["NetCore"].append("MongoDb")
-            elif selec == 3: Ruta["NetCore"].append("Postgresql") 
+            if selec == 1: Ruta["NetCore"]['Bases de datos'] = "Mysql"
+            elif selec == 2: Ruta["NetCore"]['Bases de datos'] = "MongoDb"
+            elif selec == 3: Ruta["NetCore"]['Bases de datos'] = "Postgresql" 
             print("Backend:\n\t1. NetCore\n\t2. Spring Boot\n\t3. NodeJS\n\t4. Express")
             selec = manejoINT()
-            if selec == 1: Ruta["NetCore"].append("NetCore")
-            elif selec == 2: Ruta["NetCore"].append("Spring Boot")
-            elif selec == 3: Ruta["NetCore"].append("NodeJS") 
-            elif selec == 4: Ruta["NetCore"].append("Express")
+            if selec == 1: Ruta["NetCore"]['Backend'] = "NetCore"
+            elif selec == 2: Ruta["NetCore"]['Backend'] = "Spring Boot"
+            elif selec == 3: Ruta["NetCore"]['Backend'] = "NodeJS" 
+            elif selec == 4: Ruta["NetCore"]['Backend'] = "Express"
         print("Desea crear otra Ruta?\n\t1. Sí\n\t2. No")
         selec = manejoINT()
         if selec ==1: continue 
         else: 
             print("Rutas Creadas")
+            input()
             break
 
 def  registriArea(campers,areas):
@@ -180,4 +183,5 @@ def  registriArea(campers,areas):
         if selec ==1: continue 
         else: 
             print("Areas asignadas")
+            input()
             break

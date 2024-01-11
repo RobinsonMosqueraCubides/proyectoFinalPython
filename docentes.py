@@ -20,6 +20,7 @@ def rutaDocente(docente, Ruta):
         if selec ==1: continue 
         else: 
             print("Rutas modificadas")
+            input()
             break
 
 def horarioDocente(docente):
@@ -42,6 +43,7 @@ def horarioDocente(docente):
         if selec ==1: continue 
         else: 
             print("Horarios modificados")
+            input()
             break
 
 def areaDocente(docente):
@@ -63,9 +65,11 @@ def areaDocente(docente):
         if selec ==1: continue 
         else: 
             print("Horarios modificados")
+            input()
             break
 
 def listarDocente(docente):
     print("Nombre\tArea\tHorario\tRuta")
     for i in docente:
         print(f"{i}\t{docente[i]['Area']}\t{docente[i]['Horario']}\t{docente[i]['Ruta']}")
+    input()

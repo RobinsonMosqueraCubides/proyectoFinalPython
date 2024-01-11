@@ -8,14 +8,17 @@ import json
 datos = 'data.json'
 with open(datos, 'r') as archivo:
     lista = json.load(archivo)
-campers = lista[0]
-docente = lista[1]
-Ruta = lista[2]
-areas = lista[3]
+campers = {}
+docente = {}
+Ruta = {"NodeJS": {'Fundamentos':"PSeInt y Python"}, "Java": {'Fundamentos':"PSeInt y Python"}, "NetCore": {'Fundamentos':"PSeInt y Python"}}
+areas = {"Apollo": 0, "Artemis": 0, "Sputnik": 0}
 
 def menuPrincipal():
     while True:
-        #os.system('cls')
+        lista = {'campers':campers,'docente':docente,'Ruta':Ruta,'areas':areas}
+        with open(datos, 'w') as archivo:
+            json.dump(lista, archivo)  
+        os.system('cls')
         print("Ingrese el numero de la opcion deseada:\n1. Registro\n2. Camper\n3. Docentes\n4. Listas\n5. Salir")
         selec = manejoINT()
         if selec == 1:
@@ -30,15 +33,16 @@ def menuPrincipal():
             else: print("ingrese un numero del 1 al 5")
         elif selec == 2:
             os.system('cls')
-            print("ingrese el numero de la opcion deseada:\n1. Asignar Ruta\n2. Ingreso Nota seleccion\n3. Ingreso notas del filtro\n4. campers inscritos\n5. campers bajo rendimiento\n6. Menu Anterior")
+            print("ingrese el numero de la opcion deseada:\n1. Asignar Ruta\n2. Ingreso Nota seleccion\n3. Ingreso notas del filtro\n4. campers inscritos\n5. campers bajo rendimiento\n6. Registrar fechas de inicio y fin\7. Menu anterior")
             selec = manejoINT()
             if selec == 1: AsignarRuta(campers,Ruta)
             elif selec == 2: notaSeleccion(campers)
             elif selec == 3: notasFiltro(campers)
             elif selec == 4: campersInscritos(campers)
             elif selec == 5: campersBajoRendimiento(campers)
-            elif selec == 6: continue
-            else: print("ingrese un numero del 1 al 6")
+            elif selec == 6: registroFecha(campers)
+            elif selec == 7: continue
+            else: print("ingrese un numero del 1 al 7")
         elif selec == 3: 
             os.system('cls')
             print("ingrese el numero de la opcion deseada:\n1. Modificar Ruta\n2. Modificar Horario\n3. Modificar area\n 4. docentes vinculados\n 5. Menu Anterior")
@@ -57,9 +61,7 @@ def menuPrincipal():
             elif selec == 2: listarCampersAprobados(docente, campers)
             elif selec == 3: continue
         elif selec == 5: 
-            lista = [campers,docente,Ruta,areas]
-            with open(datos, 'w') as archivo:
-                json.dump(lista, archivo)                
+                          
             break
     
         else: print("ingrese un numero del 1 al 5")
