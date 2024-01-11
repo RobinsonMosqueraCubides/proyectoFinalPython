@@ -2,15 +2,26 @@ import os
 from manejoErrores import *
 def AsignarRuta(campers, Ruta):
     while True:
-        os.system('cls')        
+        os.system('clear')   
+        
+        print(campers)     
         print("Ingrese el documento del Camper:")
         cc = input("")
+        print(cc)
+        
+        rutaCamper = {}        
         if cc in campers:
             print("Seleccione la ruta asignar:\n\t1. NodeJS\n\t2. Java\n\t3. NetCore")
             selec = manejoINT()
+<<<<<<< HEAD
             if selec == 1: campers[cc]['ruta']= {"NodeJS": Ruta.get("NodeJS", {})}
             elif selec == 2: campers[cc]['ruta']={"Java": Ruta.get("Java", {})}
             elif selec == 3: campers[cc]['ruta']={"NetCore": Ruta.get("NetCore", {})}
+=======
+            if selec == 1: campers[cc]['ruta']= rutaCamper['NodeJS']=Ruta['NodeJS']
+            elif selec == 2: campers[cc]['ruta']=rutaCamper['Java']=Ruta['Java']
+            elif selec == 3: campers[cc]['ruta']=rutaCamper['NetCore']=Ruta['NetCore']
+>>>>>>> e1c8399374e6ed4db9e5de760dec865c81ec3f83
         else: 
             print("Camper no existe")
             continue
@@ -24,18 +35,23 @@ def AsignarRuta(campers, Ruta):
 
 def notaSeleccion(campers):
     while True:
+<<<<<<< HEAD
         os.system('cls')
         #print(campers)
+=======
+        os.system('clear')
+        
+>>>>>>> e1c8399374e6ed4db9e5de760dec865c81ec3f83
         print("Ingrese el documento del Camper:")
         cc = input("")
         if cc in campers:
                 #print("Ingrese la Nota del camper")
                 nota = manejoNotasDic('Nota de Seleccion')
                 if nota >= 60:
-                    campers[cc]['estado']='inscrito'
-                    campers[cc]['notas de filtro']=[]
+                    campers[cc]['estado']='Aprobado'
+                    campers[cc]['notas de filtro']=None
                 else:
-                    campers[cc]['estado']='No inscrito'
+                    campers[cc]['estado']='inscrito'
         else: 
             print("Camper no existe")
             continue
@@ -48,13 +64,14 @@ def notaSeleccion(campers):
             break
     
 def notasFiltro(campers):
-     os.system('cls')
+     os.system('clear')
      notas ={}
      while True:        
         print("Ingrese el documento del Camper:")
         cc = input("")
         if cc in campers:
             if 'notas de filtro' in campers[cc]:
+<<<<<<< HEAD
                 if 'ruta' in campers[cc]:
                     print("seleccione el modulo:")  
                     cont=0              
@@ -106,6 +123,50 @@ def notasFiltro(campers):
                 elif selec == 5 : campers[cc]['notas de filtro'] = {'Backend': notas.get('Programacion Web', {})}
                 
                 
+=======
+                print("seleccione el modulo:")                
+                for i,j in enumerate(campers[cc]['ruta'],start=1):
+                    print(f"\t{i}. {j}")
+                selec=manejoINT()
+                if selec == 1:
+                    notas[campers[cc]['ruta'][selec-1]] = {'quiz':manejoNotasDic('quiz'),
+                                                           'taller':manejoNotasDic('taller'),
+                                                           'PruebaP':manejoNotasDic('Prueba Practica'),
+                                                           'PruebaT':manejoNotasDic('Prueba Teorica')
+                                                           }
+                elif selec ==2:
+                    notas[campers[cc]['ruta'][selec-1]] = {'quiz':manejoNotasDic('quiz'),
+                                                           'taller':manejoNotasDic('taller'),
+                                                           'PruebaP':manejoNotasDic('Prueba Practica'),
+                                                           'PruebaT':manejoNotasDic('Prueba Teorica')
+                                                           }
+                elif selec ==3:
+                    notas[campers[cc]['ruta'][selec-1]] = {'quiz':manejoNotasDic('quiz'),
+                                                           'taller':manejoNotasDic('taller'),
+                                                           'PruebaP':manejoNotasDic('Prueba Practica'),
+                                                           'PruebaT':manejoNotasDic('Prueba Teorica')
+                                                           }
+                elif selec ==4:
+                    notas[campers[cc]['ruta'][selec-1]] = {'quiz':manejoNotasDic('quiz'),
+                                                           'taller':manejoNotasDic('taller'),
+                                                           'PruebaP':manejoNotasDic('Prueba Practica'),
+                                                           'PruebaT':manejoNotasDic('Prueba Teorica')
+                                                           }
+                elif selec ==5:
+                    notas[campers[cc]['ruta'][selec-1]] = {'quiz':manejoNotasDic('quiz'),
+                                                           'taller':manejoNotasDic('taller'),
+                                                           'PruebaP':manejoNotasDic('Prueba Practica'),
+                                                           'PruebaT':manejoNotasDic('Prueba Teorica')
+                                                           }
+                elif selec ==6:
+                    notas[campers[cc]['ruta'][selec-1]] = {'quiz':manejoNotasDic('quiz'),
+                                                           'taller':manejoNotasDic('taller'),
+                                                           'PruebaP':manejoNotasDic('Prueba Practica'),
+                                                           'PruebaT':manejoNotasDic('Prueba Teorica')
+                                                           }
+                x = calNotaFinal(notas)
+                campers[cc]['notas de filtro'] = x
+>>>>>>> e1c8399374e6ed4db9e5de760dec865c81ec3f83
                 
             else:
                 print("Camper no inscrito")
@@ -131,15 +192,24 @@ def campersInscritos(campers):
     input()
 
 def campersBajoRendimiento(campers):
+<<<<<<< HEAD
     print("campers con bajo rendimiento")
     for i in campers:
         if 'notas de filtro' in campers[i]:
+=======
+     for i in campers:
+         if 'notas de filtro' in campers[i]:
+>>>>>>> e1c8399374e6ed4db9e5de760dec865c81ec3f83
             for j in campers[i]['notas de filtro']:
                 if 'NotaFinal' in campers[i]['notas de filtro'][j]:
                     NotaFinal=campers[i]['notas de filtro'][j]['NotaFinal']
                     if NotaFinal < 60:
                         print(f"CC: {i} | Nombre:{campers[i]['nombre']} | Modulo: {j} | Nota: {NotaFinal}")
+<<<<<<< HEAD
     input()
+=======
+     input()
+>>>>>>> e1c8399374e6ed4db9e5de760dec865c81ec3f83
 
 def calNotaFinal(notas):
     for i in notas:
